@@ -1,9 +1,30 @@
 import { useState } from "react";
-
+import { postApplicationData } from "../utils/applicationApi.js";
 const PositionCard = ({ position, user }) => {
     const [repoUrl, setRepoUrl] = useState("");
+    const [isUrlValid, setIsUrlValid] = useState(true);
+
+    const validateInput = () => {
+        if (!repoUrl) {
+            setIsUrlValid(false);
+            return false;
+        }
+        setIsUrlValid(true);
+        return true;
+    }
+
+    const submitData = async (formData) => {
+        const response = await postApplicationData(formData);
+        console.log("Response from API:", response);
+        if (response === null) {
+            console.log("Failed to send application...");
+            return null;
+        }
+    };
 
     const handleSubmit = (e) => {
+        if (!validateInput()) return
+        
         e.preventDefault();
         const formData = {
             uuid: user.uuid,
@@ -11,15 +32,8 @@ const PositionCard = ({ position, user }) => {
             candidateId: user.candidateId,
             repoUrl: repoUrl
         }
-        console.log("Form submitted for position:", formData);
 
-        const jsonData = JSON.stringify(formData);
-
-        console.log("JSON data:", jsonData);
-
-
-
-        // Aquí puedes manejar el envío del formulario, por ejemplo, enviando los datos a una API
+        submitData(formData);
     };
 
     const handleInputChange = (e) => {
@@ -35,6 +49,7 @@ const PositionCard = ({ position, user }) => {
                 placeholder="Repository URL"
                 onClick={(e) => e.target.select()}
                 onChange={handleInputChange}
+                className={isUrlValid ? "input" : "input error"}
             />
             <button onClick={handleSubmit}>Submit</button>
         </div>

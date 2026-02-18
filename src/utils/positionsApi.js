@@ -1,7 +1,7 @@
 export async function getPositionsInfo() {
     try {
         const response = await fetch(
-            `https://botfilter-h5ddh6dye8exb7ha.centralus-01.azurewebsites.net/api/jobs/get-list`
+            "https://botfilter-h5ddh6dye8exb7ha.centralus-01.azurewebsites.net/api/jobs/get-list"
         );
 
         if (!response.ok) {

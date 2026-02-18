@@ -1,13 +1,7 @@
 import './App.css'
 import PositionsContainer from './components/PositionsContainer';
 
-
-
 function App() {
-  
-
-
-
 
   return (
     <>

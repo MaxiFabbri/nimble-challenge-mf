@@ -14,8 +14,18 @@ const PositionsContainer = () => {
         setLoading(true);
         const fetchData = async () => {
             const userData = await getUserInfo("maxifabbri1972@gmail.com");
+            if (userData === null) {
+                setError("Failed to fetch user data");
+                setLoading(false);
+                return;
+            }
             setUser(userData);
             const positionsData = await getPositionsInfo();
+            if (positionsData === null) {
+                setError("Failed to fetch positions data");
+                setLoading(false);
+                return;
+            }
             (positionsData ? setPositions(positionsData) : setPositions([]) && setError("Failed to fetch positions data"));
 
             console.log("User info in App component:", userData);
@@ -25,7 +35,7 @@ const PositionsContainer = () => {
         };
 
         fetchData();
-    }, []); // se ejecuta una sola vez al montar el componente
+    }, []);
 
     return (
         <div>

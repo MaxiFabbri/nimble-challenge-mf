@@ -23,3 +23,7 @@
 .position-card button:hover {
     background-color: blueviolet;
 }
+
+.position-card .error {
+    border-color: red
+}
