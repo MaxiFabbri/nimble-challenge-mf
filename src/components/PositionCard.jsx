@@ -18,7 +18,7 @@ const PositionCard = ({ position, user }) => {
     const submitData = async (formData) => {
         const response = await postApplicationData(formData);
         console.log("Response from API:", response);
-        if (response === null) {
+        if (response == null) {
             console.log("Failed to send application...");
             alert("Error al enviar la aplicación. Por favor, inténtalo de nuevo.");
             return null;
@@ -31,6 +31,7 @@ const PositionCard = ({ position, user }) => {
         e.preventDefault();
         const formData = {
             uuid: user.uuid,
+            applicationId: user.applicationId,
             jobId: position.id,
             candidateId: user.candidateId,
             repoUrl: repoUrl

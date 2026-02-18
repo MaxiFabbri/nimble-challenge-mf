@@ -14,6 +14,7 @@ const PositionsContainer = () => {
         setLoading(true);
         const fetchData = async () => {
             const userData = await getUserInfo("maxifabbri1972@gmail.com");
+            console.log("Fetched user data:", userData);
             if (userData === null) {
                 setError("Failed to fetch user data");
                 setLoading(false);
