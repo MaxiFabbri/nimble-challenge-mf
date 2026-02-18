@@ -1,0 +1,25 @@
+.positions-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.position-card {
+    border: 2px solid #ccc;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 8px;
+    width: 250px;
+    height: 200px;
+}
+.position-card button {
+    background-color: dimgray;
+}
+.position-card button:hover {
+    background-color: blueviolet;
+}
