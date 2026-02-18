@@ -3,7 +3,7 @@ export async function postApplicationData(formData) {
     console.log("Submitting data to API:", formData);
     try {
         const response = await fetch(
-            "https://botfilter-h5ddh6dye8exb7ha.centralus-01.azurewebsites.net/api/candidate/apply-to-job-prueba",
+            "https://botfilter-h5ddh6dye8exb7ha.centralus-01.azurewebsites.net/api/candidate/apply-to-job",
             {
                 method: "POST",
                 headers: {
@@ -17,11 +17,12 @@ export async function postApplicationData(formData) {
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
         }
-
         const data = await response.json();
+        alert("Aplicación enviada con éxito!");
         return data;
     } catch (err) {
-        console.error("Error Submitting Data:", err);
+        console.log("Error Submitting Data:", err);
+        alert("Error al enviar la aplicación. Por favor, inténtalo de nuevo.");
         return null;
     }
 }

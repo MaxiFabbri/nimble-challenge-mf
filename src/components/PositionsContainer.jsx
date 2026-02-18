@@ -27,10 +27,6 @@ const PositionsContainer = () => {
                 return;
             }
             (positionsData ? setPositions(positionsData) : setPositions([]) && setError("Failed to fetch positions data"));
-
-            console.log("User info in App component:", userData);
-            console.log("Positions info in App component:", positionsData);
-
             setLoading(false);
         };
 

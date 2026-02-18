@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { postApplicationData } from "../utils/applicationApi.js";
+
 const PositionCard = ({ position, user }) => {
     const [repoUrl, setRepoUrl] = useState("");
     const [isUrlValid, setIsUrlValid] = useState(true);
@@ -7,6 +8,7 @@ const PositionCard = ({ position, user }) => {
     const validateInput = () => {
         if (!repoUrl) {
             setIsUrlValid(false);
+            alert("Debe Ingresar un URL.");
             return false;
         }
         setIsUrlValid(true);
@@ -18,6 +20,7 @@ const PositionCard = ({ position, user }) => {
         console.log("Response from API:", response);
         if (response === null) {
             console.log("Failed to send application...");
+            alert("Error al enviar la aplicación. Por favor, inténtalo de nuevo.");
             return null;
         }
     };
